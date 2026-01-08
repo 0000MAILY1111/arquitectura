@@ -4,18 +4,34 @@
  * and open the template in the editor.
  */
 package capas;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 /**
  *
  * @author valde
  */
 public class NegocioTipoProducto {
-    private DatoTipoProducto dato;
+  private List<String> lista;
 
     public NegocioTipoProducto() {
-        this.dato = new DatoTipoProducto();
+        lista = new ArrayList<>();
     }
-    
-    
+
+    public void registrar(String descripcion) {
+        lista.add(descripcion);
+    }
+
+    public List<String> listar() {
+        return lista;
+    }
+
+    void cargarDatos(Map<String, Object> data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Object[] guardar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

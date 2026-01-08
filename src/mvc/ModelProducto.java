@@ -15,8 +15,8 @@ public class ModelProducto {
      private String id;
     private String codigo;
     private String nombre;
+    private String cantidad; 
     private double precio;
-    
     private String tipo_producto_id;
     
     private Database database;

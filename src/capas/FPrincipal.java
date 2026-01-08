@@ -10,18 +10,15 @@ package capas;
  * @author valde
  */
 public class FPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FPrincipal
-     */
+    
     private PresentacionProducto presentacionProducto;
     private PresentacionTipoProducto presentacionTipoProducto ;
     
+    
     public FPrincipal() {
         initComponents();
-        presentacionProducto = new PresentacionProducto();
-        presentacionTipoProducto = new PresentacionTipoProducto ();
-        
+        presentacionProducto = new PresentacionProducto ();
+        presentacionTipoProducto = new PresentacionTipoProducto();
     }
 
     /**
@@ -33,8 +30,14 @@ public class FPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,20 +60,20 @@ public class FPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addGap(102, 102, 102)
+                .addComponent(jButton1)
+                .addGap(54, 54, 54)
+                .addComponent(jButton2)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(72, 72, 72))
+                .addContainerGap(134, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(143, 143, 143))
         );
 
         pack();
@@ -82,8 +85,8 @@ public class FPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        presentacionTipoProducto.setVisible (true);
         // TODO add your handling code here:
+        presentacionTipoProducto.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -124,5 +127,7 @@ public class FPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

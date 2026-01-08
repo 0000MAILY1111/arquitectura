@@ -25,6 +25,6 @@ public class ControllerProducto {
         this.view.setVisible(true);
     }
     public void cargarTipoProducto (){
-    
+       
     }
 }

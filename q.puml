@@ -1,0 +1,34 @@
+@startuml
+annotation java.lang.Override
+annotation java.lang.SuppressWarnings
+class capas.Database
+class capas.DatoProducto
+class capas.DatoTipoProducto
+class capas.FPrincipal
+class capas.NegocioProducto
+class capas.NegocioTipoProducto
+class capas.PresentacionProducto
+class capas.PresentacionTipoProducto
+class java.util.ArrayList
+class java.util.HashMap
+class java.util.List
+class java.util.Map
+class javax.swing.JFrame
+class mvc.ControllerProducto
+class mvc.ControllerTipoProducto
+class mvc.ModelProducto
+class mvc.ModelTipoProducto
+class mvc.ViewProducto
+class mvc.ViewTipoProducto
+capas.Database ..> java.lang.Override
+capas.FPrincipal ..> java.lang.SuppressWarnings
+capas.FPrincipal --|> javax.swing.JFrame
+capas.PresentacionProducto ..> java.lang.SuppressWarnings
+capas.PresentacionProducto --|> javax.swing.JFrame
+capas.PresentacionTipoProducto ..> java.lang.SuppressWarnings
+capas.PresentacionTipoProducto --|> javax.swing.JFrame
+mvc.ViewProducto ..> java.lang.SuppressWarnings
+mvc.ViewProducto --|> javax.swing.JFrame
+mvc.ViewTipoProducto ..> java.lang.SuppressWarnings
+mvc.ViewTipoProducto --|> javax.swing.JFrame
+@enduml
