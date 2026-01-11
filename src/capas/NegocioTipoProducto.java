@@ -25,6 +25,10 @@ public class NegocioTipoProducto {
     public List<String> listar() {
         return lista;
     }
+    
+    public void eliminar (String descripcion){
+        lista.remove(descripcion);
+    }
 
     void cargarDatos(Map<String, Object> data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

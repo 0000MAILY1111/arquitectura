@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class PresentacionTipoProducto extends javax.swing.JFrame {
     private NegocioTipoProducto negocio ;
-        private DefaultTableModel modelo;
+      private DefaultTableModel modelo;
 
     /**
      * Creates new form PresentacionTipoProducto
@@ -26,7 +26,7 @@ public class PresentacionTipoProducto extends javax.swing.JFrame {
         modelo = new DefaultTableModel(
             new Object[]{"ID", "Descripcion"}, 0
         );
-        jTable2.setModel(modelo);
+        jTable1.setModel(modelo);
     }
     
     private void nuevo (){
@@ -36,23 +36,32 @@ public class PresentacionTipoProducto extends javax.swing.JFrame {
     
 private void listar() {
     Map<String, Object[]> datos = (Map<String, Object[]>) negocio.listar();
-    DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
     modelo.setRowCount(0); // limpia la tabla
 
     for (Map.Entry<String, Object[]> entry : datos.entrySet()) {
-        modelo.addRow(entry.getValue());
+        Object[] value = entry.getValue();
+        modelo.addRow(value);
     }
 }
 
    
     private Map<String, Object> leerDatos() {
         // ...
-        return new HashMap<>(); // Ejemplo de retorno
+        Map<String, Object > data = new HashMap<>();
+        
+          String id = jTextField5.getText().trim();
+        String descripcion = jTextField6.getText().trim();
+        
+        data.put("id", jTextField5.getText());
+        data.put("descripcion", jTextField6.getText());
+        
+        return data;
     }
-    public NegocioTipoProducto getNegocio () {
-        return negocio;
-    }
-    public void MostrarDatos (Object[] resultado){
+   // public NegocioTipoProducto getNegocio () {
+     //   return negocio;
+   // }
+    public void mostrarDatos (Object[] resultado){
         jTextField5.setText (resultado [0].toString());
         jTextField6.setText (resultado [1].toString());
     }
@@ -62,6 +71,14 @@ private void listar() {
       negocio.cargarDatos(data);
       Object[] resultado = negocio.guardar();
       mostrarDatos(resultado);
+     }
+     
+  
+     private void eliminar () {
+      Map<String, Object> data = leerDatos();
+      String id = data.get ("id").toString();
+      negocio.eliminar (id);
+      listar();
      }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,9 +95,9 @@ private void listar() {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jTextField6 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,7 +133,13 @@ private void listar() {
 
         jLabel6.setText("ID");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -127,13 +150,7 @@ private void listar() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
+        jScrollPane3.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,24 +159,25 @@ private void listar() {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton4)
-                                .addGap(43, 43, 43)
-                                .addComponent(jButton5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField5)))
-                        .addGap(59, 59, 59)
-                        .addComponent(jButton6))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(559, Short.MAX_VALUE))
+                        .addComponent(jButton4)
+                        .addGap(43, 43, 43)
+                        .addComponent(jButton5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField5)))
+                .addGap(59, 59, 59)
+                .addComponent(jButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(403, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,9 +193,9 @@ private void listar() {
                     .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -268,13 +286,11 @@ private void listar() {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarDatos(Object[] resultado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

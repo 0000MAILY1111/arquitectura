@@ -6,6 +6,11 @@
 package capas;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author valde
@@ -13,23 +18,35 @@ import javax.swing.JOptionPane;
 public class PresentacionProducto extends javax.swing.JFrame {
     private NegocioProducto negocio;
     private NegocioTipoProducto negocioTipoProducto;
-    
-    
     /**
      * Creates new form PresentacionProducto
      */
-    public PresentacionProducto() {
-        initComponents();
-        negocio = new NegocioProducto();
-        negocioTipoProducto = new NegocioTipoProducto ();
-        
     
-
+    private Map<String, Object> leerDatos() {
+    Map<String, Object> data = new HashMap<>();
+    
+    // Leer los valores de los campos de texto
+    data.put("id", jTextField1.getText());
+    data.put("nombre", jTextField2.getText());
+    data.put("codigo", jTextField3.getText());
+    data.put("precio", jTextField4.getText());
+    
+    data.put("tipoProducto", jComboBox1.getSelectedItem());
+    
+    return data;
+}
+    
+    private void guardar(){
+    Map<String, Object> data = leerDatos();
+    negocio.cargarDatos(data);
+    
     }
-    
     private void cargarTipoProducto (Object[] tipoProductos){
-        ///para cargar el tipo de producto 
     }
+    
+    
+    
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -251,4 +268,6 @@ public class PresentacionProducto extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
+    
 }
