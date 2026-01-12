@@ -44,9 +44,6 @@ public class PresentacionProducto extends javax.swing.JFrame {
     private void cargarTipoProducto (Object[] tipoProductos){
     }
     
-    
-    
- 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -268,6 +265,10 @@ public class PresentacionProducto extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
+    void setNegocioTipoProducto(NegocioTipoProducto negocioTipoProducto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
 }

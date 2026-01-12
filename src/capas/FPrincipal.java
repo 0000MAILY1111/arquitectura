@@ -11,19 +11,16 @@ package capas;
  */
 public class FPrincipal extends javax.swing.JFrame {
     
-    private PresentacionProducto presentacionProducto;
-    private PresentacionTipoProducto presentacionTipoProducto ;
-    private NegocioTipoProducto negocioTipoProducto;
+    private  PresentacionProducto presentacionProducto;
+    private  PresentacionTipoProducto presentacionTipoProducto ;
+    private  NegocioTipoProducto negocioTipoProducto;
 
     
     public FPrincipal() {
-        initComponents();
-         negocioTipoProducto = new NegocioTipoProducto();
-    presentacionTipoProducto = new PresentacionTipoProducto(negocioTipoProducto);
+    initComponents();
+    negocioTipoProducto = new NegocioTipoProducto();
     presentacionProducto = new PresentacionProducto();
     presentacionProducto.setNegocioTipoProducto(negocioTipoProducto);
-    
-   
     }
 
     /**

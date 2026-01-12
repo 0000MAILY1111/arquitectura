@@ -26,15 +26,18 @@ public class PresentacionTipoProducto extends javax.swing.JFrame {
         modelo = new DefaultTableModel(
             new Object[]{"ID", "Descripcion"}, 0
         );
-        jTable1.setModel(modelo);
+        jTable1.setModel(modelo);     
     }
-    
+    public PresentacionTipoProducto(java.awt.Frame parent, boolean modal) {
+    throw new UnsupportedOperationException("Not supported yet."); // ← ¡ESTO FALLA!
+    }
+  
     private void nuevo (){
         jTextField5.setText(" ");
         jTextField6.setText(" ");
     }
     
-private void listar() {
+    private void listar() {
     Map<String, Object[]> datos = (Map<String, Object[]>) negocio.listar();
     DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
     modelo.setRowCount(0); // limpia la tabla
@@ -42,8 +45,8 @@ private void listar() {
     for (Map.Entry<String, Object[]> entry : datos.entrySet()) {
         Object[] value = entry.getValue();
         modelo.addRow(value);
+         }
     }
-}
 
    
     private Map<String, Object> leerDatos() {
