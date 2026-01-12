@@ -14,7 +14,7 @@ public class FPrincipal extends javax.swing.JFrame {
     private  PresentacionProducto presentacionProducto;
     private  PresentacionTipoProducto presentacionTipoProducto ;
     private  NegocioTipoProducto negocioTipoProducto;
-
+    private NegocioProducto negocio;
     
     public FPrincipal() {
     initComponents();
@@ -89,6 +89,7 @@ public class FPrincipal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         presentacionTipoProducto.setVisible(true);
+        negocio.guardar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
