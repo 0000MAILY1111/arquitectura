@@ -4,85 +4,20 @@
  * and open the template in the editor.
  */
 package capas;
-import java.util.HashMap;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
-import java.util.Map;
 /**
  *
  * @author valde
  */
 public class PresentacionTipoProducto extends javax.swing.JFrame {
-    private NegocioTipoProducto negocio ;
-      private DefaultTableModel modelo;
 
     /**
      * Creates new form PresentacionTipoProducto
      */
     public PresentacionTipoProducto() {
         initComponents();
-        negocio = new NegocioTipoProducto ();
-        modelo = new DefaultTableModel(
-            new Object[]{"ID", "Descripcion"}, 0
-        );
-        jTable1.setModel(modelo);     
-    }
-    public PresentacionTipoProducto(java.awt.Frame parent, boolean modal) {
-    throw new UnsupportedOperationException("Not supported yet."); // ← ¡ESTO FALLA!
-    }
-  
-    private void nuevo (){
-        jTextField5.setText(" ");
-        jTextField6.setText(" ");
-    }
-    
-    private void listar() {
-    Map<String, Object[]> datos = (Map<String, Object[]>) negocio.listar();
-    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-    modelo.setRowCount(0); // limpia la tabla
-
-    for (Map.Entry<String, Object[]> entry : datos.entrySet()) {
-        Object[] value = entry.getValue();
-        modelo.addRow(value);
-         }
     }
 
-   
-    private Map<String, Object> leerDatos() {
-        // ...
-        Map<String, Object > data = new HashMap<>();
-        
-          String id = jTextField5.getText().trim();
-        String descripcion = jTextField6.getText().trim();
-        
-        data.put("id", jTextField5.getText());
-        data.put("descripcion", jTextField6.getText());
-        
-        return data;
-    }
-   // public NegocioTipoProducto getNegocio () {
-     //   return negocio;
-   // }
-    public void mostrarDatos (Object[] resultado){
-        jTextField5.setText (resultado [0].toString());
-        jTextField6.setText (resultado [1].toString());
-    }
-
-     private void guardar () {
-      Map<String, Object> data = leerDatos();
-      negocio.cargarDatos(data);
-      Object[] resultado = negocio.guardar();
-      mostrarDatos(resultado);
-     }
-     
-  
-     private void eliminar () {
-      Map<String, Object> data = leerDatos();
-      String id = data.get ("id").toString();
-      negocio.eliminar (id);
-      listar();
-     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,161 +27,21 @@ public class PresentacionTipoProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField5 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTextField5.setText("jTextField2");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Descripcion");
-
-        jButton4.setText("nuevo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("guardar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setText("listar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("ID");
-
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField5)))
-                .addGap(59, 59, 59)
-                .addComponent(jButton6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(403, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        String descripcion = jTextField5.getText();
-
-    if (descripcion == null || descripcion.trim().isEmpty()) {
-        JOptionPane.showMessageDialog(
-            this,
-            "Ingrese una descripción",
-            "Error",
-            JOptionPane.ERROR_MESSAGE
-        );
-        return;
-    }
-
-    negocio.registrar(descripcion);
-    JOptionPane.showMessageDialog(this, "Guardado correctamente");
-
-    jTextField5.setText("");
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-          modelo.setRowCount(0); // limpia tabla
-
-    int id = 1;
-    for (String desc : negocio.listar()) {
-        modelo.addRow(new Object[]{id++, desc});
-    }
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,16 +79,5 @@ public class PresentacionTipoProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
-
-    
 }

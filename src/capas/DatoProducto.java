@@ -27,6 +27,16 @@ public class DatoProducto {
         this.tipo_producto_id = " ";
         this.database = new Database ();
     }
-    
+   
+    @Override
+    public String toString() {
+        return "ID: " + id + ", Nombre: " + nombre + ", Precio: $" + precio;
+    }
+
+    // ✅ MAIN PARA PRUEBAS
+    public static void main(String[] args) {
+        DatoProducto producto = new DatoProducto();
+        System.out.println(producto);
+    }
     
 }

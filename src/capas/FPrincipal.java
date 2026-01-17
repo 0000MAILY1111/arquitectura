@@ -14,13 +14,12 @@ public class FPrincipal extends javax.swing.JFrame {
     private  PresentacionProducto presentacionProducto;
     private  PresentacionTipoProducto presentacionTipoProducto ;
     private  NegocioTipoProducto negocioTipoProducto;
-    private NegocioProducto negocio;
+    private  NegocioProducto negocio;
     
     public FPrincipal() {
     initComponents();
     negocioTipoProducto = new NegocioTipoProducto();
     presentacionProducto = new PresentacionProducto();
-    presentacionProducto.setNegocioTipoProducto(negocioTipoProducto);
     }
 
     /**
